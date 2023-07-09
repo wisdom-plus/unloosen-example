@@ -1,4 +1,10 @@
 {
+  "name": "unloosen-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "author": "",
+  "license": "MIT",
   "dependencies": {
     "unloosen-ruby-loader": "^0.1.2"
   }
