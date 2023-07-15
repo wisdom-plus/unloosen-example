@@ -12,16 +12,22 @@ class Utils
     object
   end
 end
+def hoge
+  res = fetch('https://pokeapi.co/api/v2/pokemon/25/').await
+  obj = res.json.await
+  return obj
+end
 
 content_script site: 'www.example.com' do
   h1 = document.querySelector("h1")
   h1.innerText = "Hello unloosen!"
-
+  console.log('test')
+  data =hoge()
+  console.log(data.name)
   chrome.runtime.onMessage.addListener do |message|
     h1 = document.querySelector('h1')
     text = window.getSelection().toString()
     h1.innerText = text
-    true
   end
 end
 
@@ -37,3 +43,4 @@ popup do
     e.preventDefault
   end
 end
+
