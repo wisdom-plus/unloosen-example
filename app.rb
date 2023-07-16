@@ -21,12 +21,16 @@ end
 content_script site: 'www.example.com' do
   h1 = document.querySelector("h1")
   h1.innerText = "Hello unloosen!"
-  console.log('test')
+  test_object = Utils.build_js_object(memo: 'test')
+  chrome.storage.local.set(test_object)
   data =hoge()
   console.log(data.name)
   chrome.runtime.onMessage.addListener do |message|
     h1 = document.querySelector('h1')
     text = window.getSelection().toString()
+    chrome.storage.local.get('memo') do |obj|
+      console.log(obj['memo'])
+    end
     h1.innerText = text
   end
 end
